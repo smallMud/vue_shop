@@ -1,0 +1,54 @@
+@import "./variable.scss";
+/*通过该函数设置字体大小，后期方便统一管理；*/
+@mixin font_size($size){
+  @include font_dpr($size);
+}
+// 不换行
+@mixin no-wrap(){
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+// 限制行数
+@mixin clamp($row){
+  overflow:hidden;
+  text-overflow:ellipsis;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:$row;
+}
+/*水平垂直居中*/
+@mixin center(){
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+/*水平居中*/
+@mixin hCenter(){
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+/*垂直居中*/
+@mixin vCenter(){
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/*三角形*/
+@mixin triangle($dir, $width, $color){
+  width: 0;
+  height: 0;
+  border-width: $width;
+  border-style: solid solid solid solid;
+  @if($dir == Up){
+    border-color: transparent transparent $color transparent;
+  }@else if($dir == Down){
+    border-color: $color transparent transparent transparent;
+  }@else if($dir == Left){
+    border-color: transparent $color transparent transparent;
+  }@else if($dir == Right){
+    border-color: transparent transparent transparent $color;
+  }
+}

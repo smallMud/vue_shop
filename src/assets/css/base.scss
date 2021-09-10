@@ -1,0 +1,20 @@
+//此文件需要在main.js 中引入，其他的按需引入到响应的组件中即可
+
+@import "./reset.scss";
+@import "./variable.scss";
+@import "./mixin.scss";
+@import "./tools.scss";
+
+
+html, body{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+body{
+  font-size: 50px;
+  font-family: Helvetica,sans-serif,STHeiTi;
+}
+img{
+  vertical-align: bottom;
+}
