@@ -11,12 +11,30 @@ const Home = (resolve) => {
     resolve(module)
   })
 }
+const Welcome = (resolve) => {
+  import('../conponents/Welcome').then((module) => {
+    resolve(module)
+  })
+}
+const User = (resolve) => {
+  import('../conponents/user').then((module) => {
+    resolve(module)
+  })
+}
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', redirect: '/login' },
   { path: '/login', component: Login },
-  { path: '/home', component: Home }
+  {
+    path: '/home',
+    component: Home,
+    redirect: '/Welcome',
+    children: [
+      { path: '/Welcome', component: Welcome },
+      { path: '/users', component: User }
+    ]
+  }
 ]
 
 const router = new VueRouter({
