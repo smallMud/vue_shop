@@ -21,6 +21,16 @@ const User = (resolve) => {
     resolve(module)
   })
 }
+const Rights = (resolve) => {
+  import('../conponents/Rights').then((module) => {
+    resolve(module)
+  })
+}
+const Roles = (resolve) => {
+  import('../conponents/Roles').then((module) => {
+    resolve(module)
+  })
+}
 Vue.use(VueRouter)
 
 const routes = [
@@ -32,7 +42,9 @@ const routes = [
     redirect: '/Welcome',
     children: [
       { path: '/Welcome', component: Welcome },
-      { path: '/users', component: User }
+      { path: '/users', component: User },
+      { path: '/rights', component: Rights },
+      { path: '/roles', component: Roles }
     ]
   }
 ]

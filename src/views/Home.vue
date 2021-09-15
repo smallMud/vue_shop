@@ -38,7 +38,7 @@
         </el-menu>
         <!--        左侧内容end-->
       </el-aside>
-      <el-main>
+      <el-main :style="left">
         <router-view></router-view>
       </el-main>
     </el-container>
@@ -60,7 +60,8 @@ export default {
         145: 'iconfont icon-baobiao'
       },
       activePath: '',
-      isShow: false
+      isShow: false,
+      left: 'left: 200px'
     }
   },
   methods: {
@@ -90,6 +91,15 @@ export default {
         console.log(err)
       })
     this.activePath = window.sessionStorage.getItem('activePath')
+  },
+  watch: {
+    isShow (newVal) {
+      if (newVal === true) {
+        this.left = 'left: 64px'
+      } else {
+        this.left = 'left: 200px'
+      }
+    }
   }
 }
 </script>
@@ -98,6 +108,7 @@ export default {
 .home{
   height: 100%;
   user-select: none;
+  position: relative;
   .el-header{
     width: 100%;
     background-color: #373d41;
@@ -143,6 +154,14 @@ export default {
     .el-menu{
       border-right: none;
     }
+  }
+  .el-main {
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    right: 0;
+    background-color: #eaedf1;
+    transition: all 0.2s linear;
   }
 }
 </style>

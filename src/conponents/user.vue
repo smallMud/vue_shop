@@ -66,7 +66,7 @@
             <el-button type="danger" @click="open(sc.row.id)" icon="el-icon-delete" size="mini"></el-button>
             <!-- 分配角色按钮 -->
             <el-tooltip effect="dark" content="分配角色" placement="top" :enterable="false">
-              <el-button type="warning" icon="el-icon-setting" size="mini"></el-button>
+              <el-button type="warning" icon="el-icon-setting" size="mini" @click="setRole(sc.row.id )"></el-button>
             </el-tooltip>
           </template>
         </el-table-column>
@@ -130,6 +130,30 @@
     <el-button type="primary" @click="updataFormValid">确 定</el-button>
         </span>
       </el-dialog>
+      <!--      分配角色弹窗-->
+      <el-dialog
+        title="添加用户信息"
+        :visible.sync="AllotUserShow"
+        width="50%"
+        @close="AllotUserClose"
+      >
+        <p>当前的用户：{{role.username}}</p>
+        <p>当前的角色：{{role.role_name}}</p>
+        <p>分配新角色：
+          <el-select ref="selectRef" v-model="roleid" placeholder="请选择">
+          <el-option
+            v-for="item in roleslist"
+            :key="item.id"
+            :label="item.roleName"
+            :value="item.id">
+          </el-option>
+          </el-select>
+        </p>
+        <span slot="footer">
+    <el-button @click="AllotUserShow = false">取 消</el-button>
+    <el-button type="primary" @click="AllotUser">确 定</el-button>
+        </span>
+      </el-dialog>
     </el-card>
   </div>
 </template>
@@ -138,7 +162,7 @@
 // deleteUser
 import {
   getUsers, setUserInfo, addUser, getUser,
-  updataUser, deleteUser
+  updataUser, deleteUser, getRoles, putRole
 } from '../api'
 
 export default {
@@ -169,8 +193,11 @@ export default {
         pagesize: 2
       },
       userlist: [],
+      roleslist: [],
       total: 0,
+      roleid: '',
       dialogVisible: false,
+      AllotUserShow: false,
       // 添加用户
       addForm: {
         username: '',
@@ -178,6 +205,7 @@ export default {
         email: '',
         mobile: ''
       },
+      role: {},
       // 添加用户的规则
       addFromRules: {
         username: [
@@ -348,6 +376,40 @@ export default {
             console.log(err)
           })
       }
+    },
+    async setRole (id) {
+      this.userlist.forEach(value => {
+        if (value.id === id) {
+          this.role = value
+        }
+        // console.log(this.role)
+      })
+      getRoles()
+        .then(data => {
+          // console.log(data)
+          this.roleslist = data.data
+        })
+      this.AllotUserShow = true
+    },
+    AllotUser () {
+      // console.log(this.role.id)
+      // console.log(this.roleid)
+      const path = `users/${this.role.id}/role`
+      putRole(path, { rid: this.roleid })
+        .then(data => {
+          if (data.meta.status !== 200) return this.$message.error(data.meta.msg)
+          this.$message.success(data.meta.msg)
+          this.Users()
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      this.AllotUserShow = false
+    },
+    AllotUserClose () {
+      // this.$refs.selectRef.clear()
+      this.role = {}
+      this.roleid = ''
     }
   }
 }
