@@ -31,6 +31,11 @@ const Roles = (resolve) => {
     resolve(module)
   })
 }
+const Categories = (resolve) => {
+  import('../conponents/Categories').then((module) => {
+    resolve(module)
+  })
+}
 Vue.use(VueRouter)
 
 const routes = [
@@ -44,7 +49,8 @@ const routes = [
       { path: '/Welcome', component: Welcome },
       { path: '/users', component: User },
       { path: '/rights', component: Rights },
-      { path: '/roles', component: Roles }
+      { path: '/roles', component: Roles },
+      { path: '/categories', component: Categories }
     ]
   }
 ]

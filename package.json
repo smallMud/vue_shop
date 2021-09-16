@@ -13,6 +13,7 @@
     "element-ui": "^2.4.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
+    "vue-table-with-tree-grid": "^0.2.4",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
@@ -51,8 +52,8 @@
   },
   "browserslist": [
     "ie >= 8",
-   " Firefox >= 3.5",
+    " Firefox >= 3.5",
     "chrome  >= 35",
-  "  opera >= 11.5"
+    "  opera >= 11.5"
   ]
 }

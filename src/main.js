@@ -7,9 +7,11 @@ import './assets/css/base.scss'
 // 引入fonts
 import './assets/fonts/iconfont.css'
 import './plugins/element.js'
+import TreeTable from 'vue-table-with-tree-grid'
 
 Vue.config.productionTip = false
 
+Vue.component('tree-table', TreeTable)
 new Vue({
   router,
   store,

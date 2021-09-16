@@ -28,6 +28,9 @@ img{
 .el-card {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
 }
+.el-card__body{
+  padding: 0  20px!important;
+}
 
 .el-table {
   margin-top: 15px;
@@ -36,4 +39,9 @@ img{
 
 .el-pagination {
   margin-top: 25px;
+}
+
+.el-cascader-panel{
+  height: 200px;
+  overflow: auto;
 }
