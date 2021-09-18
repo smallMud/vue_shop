@@ -41,6 +41,16 @@ const Params = (resolve) => {
     resolve(module)
   })
 }
+const Goods = (resolve) => {
+  import('../conponents/goods').then((module) => {
+    resolve(module)
+  })
+}
+const Add = (resolve) => {
+  import('../conponents/Add').then((module) => {
+    resolve(module)
+  })
+}
 Vue.use(VueRouter)
 
 const routes = [
@@ -56,7 +66,9 @@ const routes = [
       { path: '/rights', component: Rights },
       { path: '/roles', component: Roles },
       { path: '/categories', component: Categories },
-      { path: '/params', component: Params }
+      { path: '/params', component: Params },
+      { path: '/goods', component: Goods },
+      { path: '/goods/add', component: Add }
     ]
   }
 ]

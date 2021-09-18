@@ -27,6 +27,7 @@ img{
 
 .el-card {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+  padding: 15px 10px;
 }
 .el-card__body{
   padding: 0  20px!important;
@@ -36,7 +37,11 @@ img{
   margin-top: 15px;
   font-size: 12px;
 }
-
+.quill-editor{
+  .ql-editor{
+    height: 200px;
+  }
+}
 .el-pagination {
   margin-top: 25px;
 }
@@ -44,4 +49,7 @@ img{
 .el-cascader-panel{
   height: 200px;
   overflow: auto;
+}
+.el-table_1_column_2 .cell{
+  @include clamp(1);
 }

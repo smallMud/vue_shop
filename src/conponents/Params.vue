@@ -314,9 +314,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.el-card{
-  padding: 15px 10px;
-}
 .el-row{
   margin: 20px 0 ;
   el-col{

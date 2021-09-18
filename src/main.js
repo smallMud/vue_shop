@@ -8,6 +8,13 @@ import './assets/css/base.scss'
 import './assets/fonts/iconfont.css'
 import './plugins/element.js'
 import TreeTable from 'vue-table-with-tree-grid'
+import VueQuillEditor from 'vue-quill-editor'
+
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
+
+Vue.use(VueQuillEditor)
 
 Vue.config.productionTip = false
 
