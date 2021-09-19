@@ -56,6 +56,11 @@ const Order = (resolve) => {
     resolve(module)
   })
 }
+const Reports = (resolve) => {
+  import('../conponents/Reports').then((module) => {
+    resolve(module)
+  })
+}
 Vue.use(VueRouter)
 
 const routes = [
@@ -74,7 +79,8 @@ const routes = [
       { path: '/params', component: Params },
       { path: '/goods', component: Goods },
       { path: '/goods/add', component: Add },
-      { path: '/orders', component: Order }
+      { path: '/orders', component: Order },
+      { path: '/reports', component: Reports }
     ]
   }
 ]
