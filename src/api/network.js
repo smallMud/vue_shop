@@ -1,4 +1,6 @@
 import axios from 'axios'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
 
 // 进行一些全局配置
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
@@ -6,10 +8,16 @@ axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 设置响应时间
 axios.defaults.timeout = 5000
 
-// 添加一个拦截器
+// 添加一个拦截器(开始)
 axios.interceptors.request.use(config => {
+  NProgress.start()
   // console.log(config)
   config.headers.Authorization = window.sessionStorage.getItem('token')
+  return config
+})
+// （结束）
+axios.interceptors.response.use(config => {
+  NProgress.done()
   return config
 })
 
